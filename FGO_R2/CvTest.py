@@ -1,18 +1,13 @@
 import cv2 as cv
 import numpy as np
 
-tp = 'Template/Attack_button.jpg'  # "CvTt/search_pic_aim.jpg"
-tar = 'D:/FGO_R2/Template/12.jpg'  # "CvTt/search_pic_main.jpg"
-
+tar = 'FGO_R2/Template/Search.jpg'  # "CvTt/search_pic_main.jpg"
 
 def match_template(filename, show_switch=False, err=0.8):
-    temppath = 'D:/FGO_R2/Template/' + filename + '.jpg'
-    # img = window_capture()
+    temppath = 'FGO_R2\\Template\\' + filename + '.jpg'
     img = cv.imread(tar)
-    # img = cv.imread(imgpath)
     player_template = cv.imread(temppath)
     player = cv.matchTemplate(img, player_template, cv.TM_CCOEFF_NORMED)
-
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(player)
     print(max_val)
     # 当图片中有与模板匹配度超过90%的部分时：
@@ -25,7 +20,6 @@ def match_template(filename, show_switch=False, err=0.8):
             cv.rectangle(img, max_loc, corner_loc, (0, 0, 255), 2)
             cv.putText(img, filename, (max_loc[0], max_loc[1] - 10), 1, 1.5, (20, 20, 255), 1, cv.LINE_4)
             cv.imshow("FGO_MatchResult", img)
-            # 显示结果1秒钟
             k = cv.waitKey(2000)
             if k == -1:
                 cv.destroyAllWindows()
@@ -64,10 +58,4 @@ def template_demo():
     cv.imshow("match-%s" % md, target)
 
 
-src = cv.imread(tar)  # 读取图片
-# cv.namedWindow("input image", cv.WINDOW_AUTOSIZE)  # 创建GUI窗口,形式为自适应
-# cv.imshow("input image", src)  # 通过名字将图像和窗口联系
-# template_demo()
-match_template("LastOrder_sign", True)
-# cv.waitKey(0)  # 等待用户操作，里面等待参数是毫秒，我们填写0，代表是永远，等待用户操作
-# cv.destroyAllWindows()  # 销毁所有窗口
+match_template("Attack_button", True)
