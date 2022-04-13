@@ -34,7 +34,7 @@ def window_capture():
 
     return cropped
 
-name = "outPut\\HomeCart.jpg"
+name = "outPut\\Test.jpg"
 print()
 window_capture()
 

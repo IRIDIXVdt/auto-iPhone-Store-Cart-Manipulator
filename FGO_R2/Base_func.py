@@ -19,7 +19,7 @@ sys.path.append(r'D:/FGO_R2')
 class Fuse:
     def __init__(self):
         self.value = 0
-        self.tolerant_time = 50  # 截取50张图片后仍未发现对应目标则报错
+        self.tolerant_time = 500  # 截取50张图片后仍未发现对应目标则报错
         # 防止程序死在死循环里
 
     def increase(self):
@@ -38,7 +38,8 @@ fuse = Fuse()
 
 def match_template(filename, show_switch=False, err=0.9):
     fuse.increase()
-    temppath = 'FGO_R2\\Template2\\' + filename + '.jpg'
+    temppath = 'outPut\\' + filename + '.jpg'
+    # temppath = 'FGO_R2\\Template2\\' + filename + '.jpg'
     img = window_capture()
     player_template = cv.imread(temppath)
     player = cv.matchTemplate(img, player_template, cv.TM_CCOEFF_NORMED)
