@@ -44,8 +44,11 @@ def match_template(filename, show_switch=False, err=0.9):
     player_template = cv.imread(temppath)
     player = cv.matchTemplate(img, player_template, cv.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(player)
-    print(max_val)  # 测试用 打出max val： 如果小于0.9 说明是多余的帧数
+
+    # print(max_val)  # 测试用 打出max val： 如果小于0.9 说明是多余的帧数
+
     if max_val > err:  # 当图片中有与模板匹配度超过90%的部分时：
+        print(max_val)
         corner_loc = (max_loc[0] + player_template.shape[1], max_loc[1] + player_template.shape[0])
         player_spot = (max_loc[0] + int(player_template.shape[1] / 2), max_loc[1] + int(player_template.shape[0] / 2))
         if show_switch:  # 重写了函数 修改了内容 使文字可以显示

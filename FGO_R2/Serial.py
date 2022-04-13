@@ -54,7 +54,8 @@ def send(Position0, Position1):
         ser.write(bytes.fromhex(send_data))  # Hex发送
         # print("发送成功",send_data)
     else:
-        print("发送失败", '像素位置：{}%,{}%'.format(round(Position0 * 100 / 1080), round(Position1 * 100 / 607)))
+        print("发送失败", '像素位置：{}%,{}%'.format(
+            round(Position0 * 100 / 1080), round(Position1 * 100 / 607)))
     wait_for_flag()
 
 
@@ -117,8 +118,10 @@ def mouse_move(xy_new, key=0):
     global xy_old
     # dx = round((xy_new[0]-xy_old[0])/1005*1.25*122/20.8*127)
     # dy = round((xy_new[1]-xy_old[1])/671*1.25*68/11.5*127)
-    dx = round((xy_new[0] - xy_old[0]) / 1280 * 1.18 * 122 / 12.7 * 127)
-    dy = round((xy_new[1] - xy_old[1]) / 720 * 1.18 * 69 / 7.2 * 127)
+    # dx = round((xy_new[0] - xy_old[0]) / 1280 * 1.18 * 122 / 12.7 * 127)
+    # dy = round((xy_new[1] - xy_old[1]) / 720 * 1.18 * 69 / 7.2 * 127)
+    dx = round((xy_new[0] - xy_old[0]) / 720 * 1.18 * 69 / 7.2 * 127)
+    dy = round((xy_new[1] - xy_old[1]) / 1280 * 1.18 * 122 / 12.7 * 127)
     X = list()
     Y = list()
     if dx > 0:
@@ -168,7 +171,9 @@ def mouse_move(xy_new, key=0):
             X.append(0)
 
     for i in range(len(X)):
-        ser.write(serial.to_bytes([0x08, 0x00, 0xA1, 0x02, key, X[i], Y[i], 0]))
+        ser.write(serial.to_bytes(
+            [0x08, 0x00, 0xA1, 0x02, key, X[i], Y[i], 0]))
+    print(X,Y)
     time.sleep(0.3)
     xy_old = xy_new
 
