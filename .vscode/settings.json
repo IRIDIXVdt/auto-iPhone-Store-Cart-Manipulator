@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./FGO_R2"
+    ]
+}

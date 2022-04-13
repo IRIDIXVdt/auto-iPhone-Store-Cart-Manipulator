@@ -4,7 +4,7 @@ import numpy as np
 tar = 'FGO_R2/Template/Search.jpg'  # "CvTt/search_pic_main.jpg"
 
 def match_template(filename, show_switch=False, err=0.8):
-    temppath = 'FGO_R2\\Template\\' + filename + '.jpg'
+    temppath = 'FGO_R2\\Template2\\' + filename + '.jpg'
     img = cv.imread(tar)
     player_template = cv.imread(temppath)
     player = cv.matchTemplate(img, player_template, cv.TM_CCOEFF_NORMED)

@@ -38,7 +38,7 @@ fuse = Fuse()
 
 def match_template(filename, show_switch=False, err=0.9):
     fuse.increase()
-    temppath = 'D:/FGO_R2/Template/' + filename + '.jpg'
+    temppath = 'FGO_R2\\Template2\\' + filename + '.jpg'
     img = window_capture()
     player_template = cv.imread(temppath)
     player = cv.matchTemplate(img, player_template, cv.TM_CCOEFF_NORMED)
@@ -50,7 +50,7 @@ def match_template(filename, show_switch=False, err=0.9):
         if show_switch:  # 重写了函数 修改了内容 使文字可以显示
             cv.rectangle(img, max_loc, corner_loc, (0, 0, 255), 2)
             cv.putText(img, filename, (max_loc[0], max_loc[1] - 10), 1, 1.5, (20, 20, 255), 1, cv.LINE_4)
-            cv.imshow("FGO_MatchResult", img)
+            cv.imshow("MatchResult", img)
             k = cv.waitKey(1000)
             if k == -1:
                 cv.destroyAllWindows()
