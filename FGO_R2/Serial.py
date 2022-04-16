@@ -80,9 +80,9 @@ xy_old = (0, 0)  # 投屏界面的像素位置(1080,607)
 
 def mouse_click():
     ser.write(serial.to_bytes([0x08, 0x00, 0xA1, 0x02, 1, 0, 0, 0]))
-    time.sleep(0.3)
+    time.sleep(0.1)
     ser.write(serial.to_bytes([0x08, 0x00, 0xA1, 0x02, 0, 0, 0, 0]))
-    time.sleep(0.3)
+    time.sleep(0.1)
 
 
 def mouse_hold():
@@ -173,8 +173,8 @@ def mouse_move(xy_new, key=0):
     for i in range(len(X)):
         ser.write(serial.to_bytes(
             [0x08, 0x00, 0xA1, 0x02, key, X[i], Y[i], 0]))
-    print(X,Y)
-    time.sleep(0.3)
+    # print(X,Y)
+    time.sleep(0.1)
     xy_old = xy_new
 
 
